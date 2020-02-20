@@ -262,6 +262,11 @@ bar {
 gaps inner 10
 gaps outer 5
 
+#open file manager
+bindsym $mod+BackSpace exec --no-startup-id dolphin --platformtheme qt5ct
+#the platformtheme thing makes it able to run with the looks it had when on KDE, but without the plasma environment thing
+
+
 # Media player controls
 #bindsym XF86AudioPlay exec playerctl play
 #bindsym XF86AudioPause exec playerctl pause
