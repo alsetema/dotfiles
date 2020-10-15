@@ -1,14 +1,18 @@
-Xcursor.theme: Oxygen_White
-Xcursor.size: 18
+cursor.theme: Oxygen_White
+Xcursor.size: 16
 
 !the following is for URXVT :)
-
 !configures font and copy paste thing, also no ugly scrollbar
-URxvt.font: xft:dejavusansmono:size=11
+URxvt.font: xft:dejavusansmono:size=11:style=bold
 URxvt.scrollBar: false
 URxvt.iso14755: false
+URxvt.iso14755_52: false
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+!URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+!URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+
+
 
 !this makes ctrl+ left right and so on be able to skip words
 URxvt.keysym.Control-Up:     \033[1;5A
@@ -16,46 +20,94 @@ URxvt.keysym.Control-Down:   \033[1;5B
 URxvt.keysym.Control-Left:   \033[1;5D
 URxvt.keysym.Control-Right:  \033[1;5C
 
+!this makes so you can scroll up without the terminal jumping to the end
+URxvt*scrollTtyOutput:      false
+URxvt*scrollWithBuffer:     true
+URxvt*scrollTtyKeypress:    true
+
+
 !transparent background
 URxvt.transparent: true
-URxvt.shading: 50
+URxvt.shading: 60
 
 !the colours will go here
+URxvt.cursorColor: green
 
 ! special
-*.foreground:   #c0c5ce
-*.background:   #2b303b
-*.cursorColor:  #c0c5ce
+*.foreground:   #f5f5f5
+*.background:   #1c1c1c
+!*.background:   #B4F6FF
+*.cursorColor:  #c5c5c5
 
 ! black
-*.color0:       #2b303b
-*.color8:       #65737e
+*.color0:       #1c1c1c
+*.color8:       #666666
 
 ! red
-*.color1:       #bf616a
-*.color9:       #bf616a
+*.color1:       #ff005b
+*.color9:       #ff00a0
 
 ! green
-*.color2:       #a3be8c
-*.color10:      #a3be8c
+*.color2:       #cee318
+*.color10:      #ccff00
 
 ! yellow
-*.color3:       #ebcb8b
-*.color11:      #ebcb8b
+*.color3:       #ffe755
+*.color11:      #ff9f00
 
 ! blue
-*.color4:       #8fa1b3
-*.color12:      #8fa1b3
+*.color4:       #048ac7
+*.color12:      #48c6ff
 
 ! magenta
-*.color5:       #b48ead
-*.color13:      #b48ead
+*.color5:       #833c9f
+*.color13:      #be67e1
 
 ! cyan
-*.color6:       #96b5b4
-*.color14:      #96b5b4
+*.color6:       #0ac1cd
+*.color14:      #63e7f0
 
 ! white
-*.color7:       #c0c5ce
-*.color15:      #eff1f5
+*.color7:       #e5e5e5
+*.color15:      #f3f3f3
 
+
+! special
+!*.foreground:   #c0c5ce
+!*.background:   #2b303b
+!*.cursorColor:  #c0c5ce
+
+! black
+!*.color0:       #2b303b
+!*.color8:       #65737e
+
+! red
+!*.color1:       #bf616a
+!*.color9:       #bf616a
+
+! green
+!*.color2:       #a3be8c
+!*.color10:      #a3be8c
+
+! yellow
+!*.color3:       #ebcb8b
+!*.color11:      #ebcb8b
+
+! blue
+!*.color4:       #8fa1b3
+!*.color12:      #8fa1b3
+
+! magenta
+!*.color5:       #b48ead
+!*.color13:      #b48ead
+
+! cyan
+!*.color6:       #96b5b4
+!*.color14:      #96b5b4
+
+! white
+!*.color7:       #c0c5ce
+!*.color15:      #eff1f5
+
+!plugins
+URxvt.perl-ext-common: default,resize-font

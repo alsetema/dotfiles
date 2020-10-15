@@ -1,0 +1,96 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+[bar/main]
+monitor = HDMI-A-1
+modules-right = cpu memory pulseaudio date
+modules-left = bspwm
+bottom = true
+background = #282c34
+padding-right = 1 
+height = 30
+font-1 = "Inconsolata Nerd Font:size=12;2"
+font-0 = "DroidSansMono Nerd Font:size=11;2:antialias=true"
+separator = "|"
+module-margin = 2
+tray-position = right
+tray-padding = 2
+override-redirect = false
+wm-restack = bspwm
+
+[bar/left]
+inherit = bar/main
+monitor = HDMI-A-0
+modules-left = bspwm
+modules-right = 
+;this is empty so that it doesnt inherit the right modules from the other one
+bottom = true
+
+
+[module/date]
+type = internal/date
+date = %d-%m-%Y%
+time = %H:%M:%S%
+interval = 1.0
+label =  %date%  %time%
+label-font = 1
+
+[module/bspwm]
+
+label-focused = " %icon% " 
+label-unfocused = " %icon% " 
+label-urgent = " %icon% "
+label-occupied = " %icon% "
+label-empty = " %icon% "
+; what this does is show only the icon of the window that is focused, rather than the icon and the name (as by default)
+
+label-focused-background = #61afef
+label-unfocused-background = #abb2bf 
+label-urgent-background = #e06c75
+
+
+strip-wsnumbers = true
+type = internal/bspwm
+enable-scroll = false
+enable-click = true
+ws-icon-0 = 1;I    
+ws-icon-1 = 2;II  
+ws-icon-2 = 3;III
+ws-icon-3 = 4;IV
+ws-icon-4 = 5;V
+ws-icon-5 = 6;VI
+ws-icon-6 = 7;VII
+ws-icon-7 = 8;VIII
+ws-icon-8 = 9;IX
+ws-icon-9 = 10;X
+
+
+[module/pulseaudio]
+type = internal/pulseaudio
+;uses default sink if normal
+;uses max vol form the program
+interval = 1
+label-volume =  %percentage%% 
+
+[module/memory]
+type = internal/memory
+interval = 3
+label = RAM %gb_used% / %gb_total%
+
+[module/cpu]
+type = internal/cpu
+label = CPU %percentage-cores%
