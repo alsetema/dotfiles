@@ -16,9 +16,9 @@
 ;
 ;==========================================================
 [bar/main]
-monitor = HDMI-A-1
+monitor = HDMI-A-0
 modules-right = cpu memory pulseaudio date
-modules-left = bspwm
+modules-left = i3 
 bottom = true
 background = #282c34
 padding-right = 1 
@@ -29,14 +29,16 @@ separator = "|"
 module-margin = 2
 tray-position = right
 tray-padding = 2
-override-redirect = false
-wm-restack = bspwm
+override-redirect = false 
+wm-restack = i3
 
 [bar/left]
 inherit = bar/main
-monitor = HDMI-A-0
-modules-left = bspwm
+monitor = HDMI-A-1
+modules-left = i3
 modules-right = 
+modules-center = windowtitle
+tray-position= None
 ;this is empty so that it doesnt inherit the right modules from the other one
 bottom = true
 
@@ -48,6 +50,7 @@ time = %H:%M:%S%
 interval = 1.0
 label =  %date%  %time%
 label-font = 1
+tray-position = none
 
 [module/bspwm]
 
@@ -83,6 +86,7 @@ ws-icon-9 = 10;X
 type = internal/pulseaudio
 ;uses default sink if normal
 ;uses max vol form the program
+sink = alsa_output.usb-BEHRINGER_UMC204HD_192k-00.analog-surround-40
 interval = 1
 label-volume =  %percentage%% 
 
@@ -93,4 +97,23 @@ label = RAM %gb_used% / %gb_total%
 
 [module/cpu]
 type = internal/cpu
-label = CPU %percentage-cores%
+interval = 1
+label = CPU %percentage-cores% / %percentage%%
+
+[module/i3]
+type = internal/i3
+pin-workspaces = true
+label-focused = " %index% " 
+label-unfocused = " %index% " 
+label-visible = " %index% " 
+label-urgent = " %index% "
+
+label-urgent-background = #e06c75
+label-visible-background = #abb2bf
+label-focused-background = #61afef
+
+[module/windowtitle]
+type = internal/xwindow
+format-padding = 20
+label-maxlen = 55
+label-empty = Empty
